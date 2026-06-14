@@ -329,7 +329,7 @@ header{
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 180px ;
-    background-color: var(--color-dark-medium);
+    background-image: url(./images/start-screen-gradient-background.svg);
 }
 
 .start-container{
@@ -390,7 +390,7 @@ header{
     padding-bottom: 14px;
 }
 
-.about-header, .pets-header, .help-header, .donation-header{
+.about-header, .pets-header, .help-header, .donation-header, .contacts-header, .adres-header{
     font-family: 'Georgia';
     font-size: 35px;
     line-height: 1.3;
@@ -589,4 +589,42 @@ header{
 .donation-header{
   display: flex;
   flex-direction: column;
+}
+
+footer{
+  padding: 40px 40px 0px 40px;
+  background-image: url(./images/start-screen-gradient-background.svg);
+}
+
+.footer-container{
+  display: flex;
+  
+  gap: 160px;
+}
+
+.contacts, .adress{
+  max-height: 235px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  gap: 40px;
+}
+
+.contacts-header, .adres-header{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+   white-space: nowrap;
+   color: var(--color-white);
+}
+
+.mail, .phone, .adres-container{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: 'Georgia';
+    font-size: 20px;
+    line-height: 1.15;
+    letter-spacing: 0.06em;
+    color: var(--color-gold);
 }
