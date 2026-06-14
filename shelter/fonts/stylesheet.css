@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'Georgia';
+    font-family: 'Georgia-italic';
     src: url('Georgia-Italic.woff2') format('woff2');
     font-weight: normal;
     font-style: italic;
@@ -15,7 +15,7 @@
 }
 
 @font-face {
-    font-family: 'Arial';
+    font-family: 'Arial-italic';
     src: url('Arial-ItalicMT.woff2') format('woff2');
     font-weight: normal;
     font-style: italic;

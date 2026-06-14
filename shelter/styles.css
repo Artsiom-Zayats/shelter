@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Georgia-italic';
-    src: url('Georgia-Italic.woff2') format('woff2');
+    src: url('./fonts/Georgia-Italic.woff2') format('woff2');
     font-weight: normal;
     font-style: italic;
     font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
     font-family: 'Arial-italic';
-    src: url('Arial-ItalicMT.woff2') format('woff2');
+    src: url('./fonts/Arial-ItalicMT.woff2') format('woff2');
     font-weight: normal;
     font-style: italic;
     font-display: swap;
@@ -390,7 +390,7 @@ header{
     padding-bottom: 14px;
 }
 
-.about-header, .pets-header{
+.about-header, .pets-header, .help-header, .donation-header{
     font-family: 'Georgia';
     font-size: 35px;
     line-height: 1.3;
@@ -474,7 +474,7 @@ header{
     padding-bottom: 30px;
 }
 
-.pet-name{
+.pet-name, .card-name{
     font-family: 'Georgia';
     font-size: 20px;
     line-height: 1.00;
@@ -493,4 +493,100 @@ header{
     padding: 15px 45px 15px 45px;
 }
 
+.help{
+  padding: 80px 40px 100px 40px;
+  max-width: 1280px;
+  
+  
+}
 
+.help-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  padding-left: 87px;
+  padding-right: 87px;
+}
+
+.help-header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.help-list{
+  line-height: 1.15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 120px;
+  row-gap: 55px;
+  flex-wrap: wrap;
+}
+
+.list-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  white-space: nowrap;
+
+}
+
+.donation{
+  padding: 80px 182px 100px 183px;
+  background-color: var(--color-grey-light);
+}
+
+
+.donation-content{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  justify-content: center;
+}
+
+.donation-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.credit-card{
+  background-color: var(--color-gold);
+  border-radius: 10px;
+  padding: 10px 15px 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.donation-subheader{
+  font-family: 'Georgia';
+    font-size: 15px;
+    line-height: 1.1;
+    letter-spacing: 0.06em;
+    color: var(--color-dark-medium);
+}
+
+.credit-card-number{
+   font-family: 'Georgia';
+    font-size: 20px;
+    line-height: 1.15;
+    letter-spacing: 0.06em;
+    color: var(--color-dark-medium);
+}
+
+.payment-info{
+  font-family: 'Arial-italic';
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 0.06em;
+    color: var(--color-dark-medium);
+}
+.donation-header{
+  display: flex;
+  flex-direction: column;
+}
