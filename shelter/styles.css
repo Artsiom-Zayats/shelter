@@ -279,7 +279,7 @@ body{
     margin: 0 auto;
     position: relative;
 }
-header{
+.header-main{
     display: flex;
     padding-left: 40px;
     padding-right: 40px;
@@ -297,14 +297,14 @@ header{
     font-family: 'Georgia';
 }
 
-.top-logo{
+.top-logo, .top-logo-pet{
     font-size: 32px;
     line-height: 1.1;
     letter-spacing: 0.06em;
     color: var(--color-gold);
 }
 
-.bot-logo{
+.bot-logo, .bot-logo-pet{
     font-family: 'Arial';
     font-size: 13px;
     line-height: auto;
@@ -313,7 +313,7 @@ header{
 }
 
 
-.nav-menu-list{
+.nav-menu-list, .nav-menu-list-pet{
     display: flex;
     gap: 35px;
     font-family: 'Arial';
@@ -359,7 +359,7 @@ header{
 .gold-button{
     
     padding: 15px 45px 15px 45px;
-    
+    cursor: pointer;
     border: none;
     border-radius: var(--border-radius);
     background-color: var(--color-gold);
@@ -390,7 +390,7 @@ header{
     padding-bottom: 14px;
 }
 
-.about-header, .pets-header, .help-header, .donation-header, .contacts-header, .adres-header{
+.about-header, .pets-header, .help-header, .donation-header, .contacts-header, .adres-header, .pets-section-header{
     font-family: 'Georgia';
     font-size: 35px;
     line-height: 1.3;
@@ -472,7 +472,10 @@ header{
     background-color: var(--color-grey-light);
     border-radius: var(--border-radius);
     padding-bottom: 30px;
+    cursor: pointer;
+    
 }
+
 
 .pet-name, .card-name{
     font-family: 'Georgia';
@@ -491,6 +494,10 @@ header{
     border-radius: var(--border-radius);
     border: 2px solid var(--color-gold); 
     padding: 15px 45px 15px 45px;
+}
+
+.about-pet-button:hover{
+  background-color: var(--color-gold);
 }
 
 .help{
@@ -627,4 +634,102 @@ footer{
     line-height: 1.15;
     letter-spacing: 0.06em;
     color: var(--color-gold);
+}
+
+.header-ourpets{
+  display: flex;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Georgia';
+    color: var(--color-dark-medium);
+    background-color: var(var(--color-white)) ;
+}
+.left-end-navigator, .left-navigator, .right-navigator, .right-end-navigator  {
+   width: 52px;
+    height: 52px;
+    background: transparent;  
+    border: 2px solid var(--color-gold); 
+    border-radius: 52px;  
+    
+  
+ 
+    background-repeat: no-repeat;
+    background-position:  center;
+    transition: background-color 0.5s ease;
+}
+
+.page{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   width: 52px;
+    height: 52px;
+    border-radius: 52px;
+    background-color: var(--color-gold);
+}
+
+.pets-section{
+  padding: 80px 40px 100px 40px;
+  background-color: var(--color-grey-light);
+}
+.pets-section-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 45px;
+}
+.pets-section-header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards-container{
+  display: flex;
+  row-gap: 40px;
+  column-gap: 30px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.navigation{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-menu-list-pet, .top-logo-pet, .bot-logo-pet {
+  color: var(--color-dark-high);
+}
+
+.left-end-navigator{
+  background-image: url(./icons/__.svg);
+}
+
+.left-navigator{
+  background-image: url(./icons/_.svg);
+}
+
+.right-navigator{
+  background-image: url(./icons/_\ \(1\).svg);
+}
+
+.right-end-navigator{
+  background-image: url(./icons/__\ \(1\).svg);
+}
+
+.nav-item{
+  color: var(--color-white);
+}
+.nav-item-pet{
+  color: var(--color-dark-high);
+}
+#int, #int2{
+  border-bottom: 2px solid var(--color-gold);
 }
