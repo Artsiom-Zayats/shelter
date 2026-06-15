@@ -733,3 +733,18 @@ footer{
 #int, #int2{
   border-bottom: 2px solid var(--color-gold);
 }
+
+@media (max-width:768px){
+  .start-screen{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .start-container{
+    max-width: 460px;
+  }
+
+  .gold-button{
+    align-self: center;
+  }
+}
