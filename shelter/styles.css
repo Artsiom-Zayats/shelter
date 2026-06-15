@@ -527,7 +527,7 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 120px;
+  gap: 119px;
   row-gap: 55px;
   flex-wrap: wrap;
 }
