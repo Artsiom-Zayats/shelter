@@ -779,4 +779,34 @@ footer{
   .pet-card{
     max-width: 270px;
   }
+
+  .slider-body{
+    gap: 40px;
+  }
+  
+.slider{
+  gap: 15px;
+}
+
+  .pets{
+    padding: 80px 30px 100px 30px;
+    background-color: var(--color-grey-light);
+}
+
+.help-list{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  align-items: center;
+  justify-content: center;
+  gap: 60px 55px;
+}
+.help{
+    padding: 80px 69px 100px 69px;
+    
+}
+.help-content{
+  
+  padding-left: 0px;
+  padding-right: 0px;
+}
 }
