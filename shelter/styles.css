@@ -9,7 +9,7 @@
 @font-face {
     font-family: 'Georgia';
     src: url('Georgia.woff2') format('woff2');
-    font-weight: normal;
+    font-weight: normal ;
     font-style: normal;
     font-display: swap;
 }
@@ -25,7 +25,7 @@
 @font-face {
     font-family: 'Arial';
     src: url('ArialMT.woff2') format('woff2');
-    font-weight: normal;
+    font-weight: normal ;
     font-style: normal;
     font-display: swap;
 }
@@ -257,8 +257,7 @@ svg * {
 
     --border-radius: 20px;
 
-    --font-family-base: 'Heebo', sans-serif;
-    --font-family-base: 'Yantramanav', sans-serif;
+   
 
     --container-width: 1280x;
     --container-padding-x: 15px;
@@ -329,7 +328,7 @@ body{
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 180px ;
-    background-image: url(./images/start-screen-gradient-background.svg);
+    background: url(./images/noise_transparent.png), radial-gradient(100% 100% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
 }
 
 .start-container{
@@ -600,12 +599,19 @@ body{
 
 footer{
   padding: 40px 40px 0px 40px;
-  background-image: url(./images/start-screen-gradient-background.svg);
+  background: url(./images/noise_transparent.png), radial-gradient(100% 100% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
 }
 
 .footer-container{
   display: flex;
+  gap: 160px;
   
+}
+
+.footer-info{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 160px;
 }
 
@@ -614,7 +620,7 @@ footer{
   display: flex;
   flex-direction: column;
   align-self: center;
-  gap: 40px;
+  gap: 35px;
 }
 
 .contacts-header, .adres-header{
@@ -738,11 +744,19 @@ footer{
   max-width: 270px;
   max-height: 270px;
 }
-@media (max-width:768px){
+
+.contacts{
+  max-width: 278px;
+}
+
+.address{
+  max-width: 302px;
+
+}
+@media (max-width:1024px){
   .start-screen{
     display: flex;
     flex-direction: column;
-    background-image: url(./images/start-screen-gradient-background768.svg);
     gap: 100px;
     padding-top: 150px;
   }
@@ -808,5 +822,39 @@ footer{
   
   padding-left: 0px;
   padding-right: 0px;
+}
+
+.donation-content{
+  flex-direction: column-reverse;
+  gap: 60px;
+}
+
+.sobaka{
+  max-width: 505px;
+  max-height: 261px;
+}
+
+.footer-container{
+  gap: 65px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.contacts, .adress{
+  max-width: 302px;
+  max-height: 234px;
+  
+}
+.adress{
+  gap: 35px;
+}
+
+.footer-info{
+  gap: 60px;
+}
+footer{
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 30px;
 }
 }
