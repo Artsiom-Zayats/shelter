@@ -857,4 +857,90 @@ footer{
   padding-right: 30px;
   padding-top: 30px;
 }
+
+
+}
+@media(max-width: 767px){
+  
+.burger-button{
+  width: 30px;
+  height: 30px;
+  position: relative;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+.burger-button span, .burger-button::before, .burger-button::after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+ 
+  background-color: var(--color-gold);
+  border-radius: 30px;
+}
+
+.burger-button::before{
+   top: 0;
+}
+
+.burger-button span{
+  top: 50%;
+}
+
+.burger-button::after{
+  bottom: 0;
+}
+
+.nav-menu{
+  display: none;
+}
+
+.start-screen{
+  padding-left:10px;
+  padding-right: 10px;;
+}
+.main-header{
+ 
+    font-size: 25px;
+    line-height: 1.3;
+    letter-spacing: 0.06em;
+    
+}
+.start-container{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 42px;
+}
+.pes{
+  max-width: 260px;
+  max-height: 272px;
+}
+
+.pets-img{
+  max-width: 260px;
+  max-height: 353px;
+}
+
+.about{
+  flex-direction: column-reverse;
+  padding: 42px 10px 42px 10px;
+  gap: 42px;
+}
+
+.about-header{
+  text-align: center;
+  font-size: 25px;
+    line-height: 1.3;
+    letter-spacing: 0.06em;
+}
+.about-container{
+  height: auto;
+  width: auto;
+}
+
+.about-info{
+  text-align: justify;
+}
 }
