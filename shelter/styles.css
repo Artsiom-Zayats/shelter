@@ -754,7 +754,7 @@ footer{
   max-width: 302px;
 
 }
-@media (max-width:1024px){
+@media (max-width:1279px){
   .start-screen{
     display: flex;
     flex-direction: column;
@@ -892,6 +892,19 @@ footer{
 .burger-button::after{
   bottom: 0;
 }
+
+.burger-button:active span{
+  transform: rotate(90deg);
+}
+
+.burger-button:active::after{
+   transform: translateX(15px) translateY(-13px) rotate(90deg);
+}
+.burger-button:active::before{
+ transform:translateX(-15px) translateY(15px) rotate(-90deg);
+}
+
+
 
 .nav-menu{
   display: none;
