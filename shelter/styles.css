@@ -285,11 +285,12 @@ body{
     padding-right: 40px;
     padding-top: 30px;
     width: 100%;
-    justify-content: space-between;
+    
     align-items: center;
     font-family: 'Georgia';
     position: absolute;
 }
+
 .logo{
     display: flex;
     flex-direction: column;
@@ -312,6 +313,9 @@ body{
     color: var(--color-white);
 }
 
+.nav-menu{
+  margin-left: auto;
+}
 
 .nav-menu-list, .nav-menu-list-pet{
     display: flex;
@@ -864,6 +868,7 @@ footer{
 @media(max-width: 767px){
   
 .burger-button{
+  
   width: 30px;
   height: 30px;
   position: relative;
