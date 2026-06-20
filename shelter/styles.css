@@ -935,7 +935,8 @@ footer{
   .help-header,
    .donation-header,
     .contacts-header,
-    .adres-header{
+    .adres-header,
+    .pets-section-header{
   text-align: center;
   font-size: 25px;
     line-height: 1.3;
@@ -959,7 +960,8 @@ footer{
  .help-header,
   .donation-header,
    .contacts-header,
-   .adres-header{
+   .adres-header,
+   .pets-section-header{
   white-space: nowrap;
   font-style: normal; font-variant: normal; font-weight: 400;
 }
@@ -968,7 +970,9 @@ footer{
 .slider-body .pet-card:nth-child(3){
     display: none;
 }
-
+.cards-container .pet-card:nth-child(n+4){
+  display: none;
+}
 .slider{
   column-gap: 80px;
   flex-wrap: wrap;
@@ -1032,5 +1036,14 @@ footer{
 
 .footer-info{
   flex-direction: column;
+}
+
+.navigation{
+  gap: 10px;
+}
+
+.pets-section{
+  padding-top: 42px;
+  padding-bottom: 42px;
 }
 }
