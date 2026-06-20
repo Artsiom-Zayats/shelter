@@ -9,9 +9,10 @@
 @font-face {
     font-family: 'Georgia';
     src: url('Georgia.woff2') format('woff2');
-    font-weight: normal ;
+    font-weight: 400 ;
     font-style: normal;
     font-display: swap;
+    font-variant: normal; 
 }
 
 @font-face {
@@ -463,7 +464,7 @@ body{
     gap: 90px;
 }
 
-.pet-card, .pet-card-768{
+.pet-card{
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -780,7 +781,7 @@ footer{
     gap: 80px;
   }
 
-  .pet-card-768{
+  .slider-body .pet-card:nth-child(3){
     display: none;
   }
   .pet-card, .about-pet-button{
@@ -929,11 +930,12 @@ footer{
   gap: 42px;
 }
 
-.about-header{
+.about-header, .pets-header, .help-header{
   text-align: center;
   font-size: 25px;
     line-height: 1.3;
     letter-spacing: 0.06em;
+    
 }
 .about-container{
   height: auto;
@@ -943,4 +945,50 @@ footer{
 .about-info{
   text-align: justify;
 }
+
+.pets{
+  padding: 42px 10px 42px 10px;
+}
+
+.pets-header, .help-header{
+  white-space: nowrap;
+  font-style: normal; font-variant: normal; font-weight: 400;
+}
+
+.slider-body .pet-card:nth-child(2),
+.slider-body .pet-card:nth-child(3){
+    display: none;
+}
+
+.slider{
+  column-gap: 80px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.pets-content{
+  gap: 42px;
+}
+.slider-body{
+  order: 1;
+}
+.left{
+  order: 2;
+}
+.right{
+  order: 3;
+}
+
+.help{
+  padding: 42px 15px 42px 15px;
+}
+
+.help-list{
+ 
+  grid-template-columns: repeat(2,1fr);
+  align-items: center;
+  justify-content: center;
+  gap: 30px 0px ;
+}
+
 }
