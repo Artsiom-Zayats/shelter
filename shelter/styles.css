@@ -868,7 +868,7 @@ footer{
 @media(max-width: 767px){
   
 .burger-button{
-  
+  margin-left: auto;
   width: 30px;
   height: 30px;
   position: relative;
