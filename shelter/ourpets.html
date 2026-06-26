@@ -6,23 +6,43 @@
     <title>Our pets</title>
     <link rel="icon" type="image/svg+xml" href="./icons/icon-collars-leashes.svg">
     <link rel="stylesheet" href="./styles.css">
+    <script src="./index.js"></script>
 </head>
 <body>
    <header class="header-ourpets">
-    <a href="./index.html" class="logo">
-        <p class="top-logo-pet">Cozy House</p>
-        <p class="bot-logo-pet">Shelter for pets in Boston</p>
-    </a>
-    <nav class="nav-menu">
-        <ul class="nav-menu-list-pet">
-            <li class="nav-item-pet">
-                <a href="./index.html">About the shelter</a></li>
-            <li class="nav-item-pet" id="int">Our pets</li>
-            <li class="nav-item-pet">
-                <a href="./index.html#help">Help the shelter</a></li>
-            <li class="nav-item-pet">
-                <a href="#contacts">Contacts</a></li>
-        </ul>
+    <div class="header-content">
+        <a href="./index.html" class="logo">
+            <p class="top-logo-pet">Cozy House</p>
+            <p class="bot-logo-pet">Shelter for pets in Boston</p>
+        </a>
+        <nav class="nav-menu">
+            <ul class="nav-menu-list-pet">
+                <li class="nav-item-pet">
+                    <a href="./index.html">About the shelter</a></li>
+                <li class="nav-item-pet" id="int">Our pets</li>
+                <li class="nav-item-pet">
+                    <a href="./index.html#help">Help the shelter</a></li>
+                <li class="nav-item-pet">
+                    <a href="#contacts">Contacts</a></li>
+            </ul>
+        </nav>
+        <div class="burger-button">
+            <span></span>
+        </div>
+    </div>
+    <nav class="burger-menu hidden-burger">
+            <div class="burger-item">
+                <a href="./index.html" class="nav-item" >About the shelter</a>
+            </div>
+            <div class="burger-item">
+                <a href="./ourpets.html" class="nav-item">Our pets</a></li>
+            </div>
+            <div class="burger-item">
+                <a href="./index.html#help" class="nav-item">Help the shelter</a></li>
+            </div>
+            <div class="burger-item">
+                <a href="#contacts" class="nav-item">Contacts</a></li>
+            </div>
     </nav>
    </header>
    <main>
@@ -121,5 +141,6 @@
             <img src="./images/footer-puppy.svg" alt="puppy">
         </div>
    </footer>
+   <div class="overlay"></div>
 </body>
 </html>

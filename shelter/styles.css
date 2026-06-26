@@ -9,9 +9,10 @@
 @font-face {
     font-family: 'Georgia';
     src: url('Georgia.woff2') format('woff2');
-    font-weight: normal;
+    font-weight: 400 ;
     font-style: normal;
     font-display: swap;
+    font-variant: normal; 
 }
 
 @font-face {
@@ -25,7 +26,7 @@
 @font-face {
     font-family: 'Arial';
     src: url('ArialMT.woff2') format('woff2');
-    font-weight: normal;
+    font-weight: normal ;
     font-style: normal;
     font-display: swap;
 }
@@ -257,8 +258,7 @@ svg * {
 
     --border-radius: 20px;
 
-    --font-family-base: 'Heebo', sans-serif;
-    --font-family-base: 'Yantramanav', sans-serif;
+   
 
     --container-width: 1280x;
     --container-padding-x: 15px;
@@ -280,16 +280,23 @@ body{
     position: relative;
 }
 .header-main{
-    display: flex;
+   
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 30px;
     width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Georgia';
     position: absolute;
+    
+    font-family: 'Georgia';
+    
 }
+.header-content{
+  width: 100%;
+   display: flex;
+   align-items: center;
+   
+}
+
 .logo{
     display: flex;
     flex-direction: column;
@@ -312,6 +319,9 @@ body{
     color: var(--color-white);
 }
 
+.nav-menu{
+  margin-left: auto;
+}
 
 .nav-menu-list, .nav-menu-list-pet{
     display: flex;
@@ -329,7 +339,7 @@ body{
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 180px ;
-    background-image: url(./images/start-screen-gradient-background.svg);
+    background: url(./images/noise_transparent.png), radial-gradient(100% 100% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
 }
 
 .start-container{
@@ -600,12 +610,19 @@ body{
 
 footer{
   padding: 40px 40px 0px 40px;
-  background-image: url(./images/start-screen-gradient-background.svg);
+  background: url(./images/noise_transparent.png), radial-gradient(100% 100% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
 }
 
 .footer-container{
   display: flex;
+  gap: 160px;
   
+}
+
+.footer-info{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 160px;
 }
 
@@ -614,7 +631,7 @@ footer{
   display: flex;
   flex-direction: column;
   align-self: center;
-  gap: 40px;
+  gap: 35px;
 }
 
 .contacts-header, .adres-header{
@@ -730,14 +747,79 @@ footer{
 .nav-item-pet{
   color: var(--color-dark-high);
 }
-#int, #int2{
+
+
+.pet-photo{
+  max-width: 270px;
+  max-height: 270px;
+}
+
+.contacts{
+  max-width: 278px;
+}
+
+.address{
+  max-width: 302px;
+
+}
+
+.burger-menu{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  font-family: 'Arial';
+  font-size: 32px;
+  line-height: 1.6;
+  letter-spacing: 0.0em;
+  color: var(--color-dark-medium);
+  background-color: var(--color-dark-high);
+  height: 100%;
+  width: 320px;
+  position: fixed;
+  z-index: 300;
+  right: 0;
+  top: 0;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover{
+  color: var(--color-gold);
+}
+
+.nav-item:active{
   border-bottom: 2px solid var(--color-gold);
 }
 
-@media (max-width:768px){
+.hidden-burger {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(24, 28, 41, 0.8);
+    z-index: 299; 
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+@media (max-width:1279px){
   .start-screen{
     display: flex;
     flex-direction: column;
+    gap: 100px;
+    padding-top: 150px;
   }
 
   .start-container{
@@ -747,4 +829,297 @@ footer{
   .gold-button{
     align-self: center;
   }
+  .pes{
+    width: 569px;
+    height: 593px;
+    align-self: flex-end;
+  }
+
+  .about{
+    flex-direction: column-reverse;
+    align-self: flex-end;
+    gap: 80px;
+  }
+
+  .slider-body .pet-card:nth-child(3){
+    display: none;
+  }
+  .pet-card, .about-pet-button{
+    background-color: var(--color-white);
+  }
+  .pets-content{
+    background-color: var(--color-grey-light);
+  }
+
+  .pet-card{
+    max-width: 270px;
+  }
+
+  .slider-body{
+    gap: 40px;
+  }
+  
+.slider{
+  gap: 15px;
+}
+
+  .pets{
+    padding: 80px 30px 100px 30px;
+    background-color: var(--color-grey-light);
+}
+
+.help-list{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  align-items: center;
+  justify-content: center;
+  gap: 60px 55px;
+}
+.help{
+    padding: 80px 69px 100px 69px;
+    
+}
+.help-content{
+  
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.donation-content{
+  flex-direction: column-reverse;
+  gap: 60px;
+}
+
+.sobaka{
+  max-width: 505px;
+  max-height: 261px;
+}
+
+.footer-container{
+  gap: 65px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.contacts, .adress{
+  max-width: 302px;
+  max-height: 234px;
+  
+}
+.adress{
+  gap: 35px;
+}
+
+.footer-info{
+  gap: 60px;
+}
+footer{
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 30px;
+}
+
+
+}
+@media(max-width: 767px){
+  
+.burger-button{
+  margin-left: auto;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  background: transparent;
+  cursor: pointer;
+  z-index: 301;
+  padding: 0;
+}
+.burger-button span, .burger-button::before, .burger-button::after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+ 
+  background-color: var(--color-gold);
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.burger-button::before{
+   top: 0;
+}
+
+.burger-button span{
+  top: 50%;
+}
+
+.burger-button::after{
+  bottom: 0;
+}
+
+.burger-button.active span{
+  transform: rotate(90deg);
+}
+
+.burger-button.active::after{
+   transform: translateX(15px) translateY(-13px) rotate(90deg);
+}
+.burger-button.active::before{
+ transform:translateX(-15px) translateY(15px) rotate(-90deg);
+}
+
+
+
+.nav-menu{
+  display: none;
+}
+
+.start-screen{
+  padding-left:10px;
+  padding-right: 10px;;
+}
+.main-header{
+ 
+    font-size: 25px;
+    line-height: 1.3;
+    letter-spacing: 0.06em;
+    
+}
+.start-container{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 42px;
+}
+.pes{
+  max-width: 260px;
+  max-height: 272px;
+}
+
+.pets-img{
+  max-width: 260px;
+  max-height: 353px;
+}
+
+.about{
+  flex-direction: column-reverse;
+  padding: 42px 10px 42px 10px;
+  gap: 42px;
+}
+
+.about-header,
+ .pets-header,
+  .help-header,
+   .donation-header,
+    .contacts-header,
+    .adres-header,
+    .pets-section-header{
+  text-align: center;
+  font-size: 25px;
+    line-height: 1.3;
+    letter-spacing: 0.06em;
+    
+}
+.about-container{
+  height: auto;
+  width: auto;
+}
+
+.about-info{
+  text-align: justify;
+}
+
+.pets{
+  padding: 42px 10px 42px 10px;
+}
+
+.pets-header,
+ .help-header,
+  .donation-header,
+   .contacts-header,
+   .adres-header,
+   .pets-section-header{
+  white-space: nowrap;
+  font-style: normal; font-variant: normal; font-weight: 400;
+}
+
+.slider-body .pet-card:nth-child(2),
+.slider-body .pet-card:nth-child(3){
+    display: none;
+}
+.cards-container .pet-card:nth-child(n+4){
+  display: none;
+}
+.slider{
+  column-gap: 80px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.pets-content{
+  gap: 42px;
+}
+.slider-body{
+  order: 1;
+}
+.left{
+  order: 2;
+}
+.right{
+  order: 3;
+}
+
+.help{
+  padding: 42px 15px 42px 15px;
+}
+
+.help-list{
+ 
+  grid-template-columns: repeat(2,1fr);
+  align-items: center;
+  justify-content: center;
+  gap: 30px 0px ;
+}
+
+.donation{
+  padding: 42px 20px 42px 20px;
+}
+.sobaka{
+  max-width: 260px;
+  max-height: 135px;
+}
+
+.donation-subheader{
+  white-space: nowrap;
+}
+
+.credit-card-number{
+  font-size: 15px;
+}
+
+.credit-card{
+  justify-content: space-evenly;
+}
+
+footer{
+  padding-top: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.puppu-pes{
+  max-width: 260px;
+  max-height: 269px;
+}
+
+.footer-info{
+  flex-direction: column;
+}
+
+.navigation{
+  gap: 10px;
+}
+
+.pets-section{
+  padding-top: 42px;
+  padding-bottom: 42px;
+}
 }
