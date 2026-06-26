@@ -400,7 +400,14 @@ body{
     padding-bottom: 14px;
 }
 
-.about-header, .pets-header, .help-header, .donation-header, .contacts-header, .adres-header, .pets-section-header{
+.about-header, 
+.pets-header, 
+.help-header, 
+.donation-header,
+ .contacts-header,
+  .adres-header, 
+  .pets-section-header,
+  .modal-name{
     font-family: 'Georgia';
     font-size: 35px;
     line-height: 1.3;
@@ -434,6 +441,27 @@ body{
     background-position:  center;
     transition: background-color 0.5s ease;
 }
+
+.button-close{
+  position: absolute;
+  top: -52px;
+  right: -52px;
+  width: 52px;
+    height: 52px;
+    background: transparent;  
+    border: 2px solid var(--color-gold); 
+    border-radius: 52px;  
+    background-image: url(./icons/close.svg);
+    background-repeat: no-repeat;
+    background-position:  center;
+    transition: background-color 0.5s ease;
+}
+
+.modal-button-close{
+  display: flex;
+  justify-content: flex-end;
+}
+
 .right{
     width: 52px;
     height: 52px;
@@ -487,7 +515,7 @@ body{
 }
 
 
-.pet-name, .card-name{
+.pet-name, .card-name, .modal-typeBreed{
     font-family: 'Georgia';
     font-size: 20px;
     line-height: 1.00;
@@ -580,7 +608,7 @@ body{
   gap: 15px;
 }
 
-.donation-subheader{
+.donation-subheader, .modal-pets-info{
   font-family: 'Georgia';
     font-size: 15px;
     line-height: 1.1;
@@ -792,6 +820,10 @@ footer{
   border-bottom: 2px solid var(--color-gold);
 }
 
+.hidden{
+  display: none;
+}
+
 .hidden-burger {
     transform: translateX(100%);
     opacity: 0;
@@ -814,7 +846,91 @@ footer{
     visibility: visible;
     opacity: 1;
 }
+
+.modal{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  transform: translate(-50%, -50%);
+  
+ 
+}
+
+.modal-content{
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  background-color: var(--color-white);
+  border-radius: 20px;
+  overflow: hidden;
+  
+  padding-right: 20px;
+}
+
+.modal-image{
+  width: 500px;
+  height: 500px;
+}
+
+.modal-info{
+  max-width: 351px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+
+.modal-li-info{
+  font-family: 'Georgia';
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.15;
+    letter-spacing: 0.06em;
+    color: var(--color-dark-medium);
+}
+
+.modal-age, .inoculations, .diseases , .parasites{
+   font-family: 'Georgia';
+    font-size: 15px;
+    
+    line-height: 1.15;
+    letter-spacing: 0.06em;
+    color: var(--color-dark-medium);
+}
+
+.modal-list {
+  list-style-type: disc;    
+  padding-left: 1.5em;     
+}
+
+.modal-li::marker {
+  color: var(--color-gold);         
+  font-size: 1.5em;   
+}
+
 @media (max-width:1279px){
+
+
+  .modal{
+    width: max-content;
+    height: max-content;
+  }
+  .modal-image{
+    width: 350px;
+    height: 350px;
+  }
+
+  .modal-info{
+    padding-bottom: 15px;
+    padding-top: 15px;
+    max-width: 250px;
+    gap: 20px;
+  }
   .start-screen{
     display: flex;
     flex-direction: column;
@@ -923,6 +1039,22 @@ footer{
 }
 @media(max-width: 767px){
   
+.modal-image{
+  display: none;
+}
+
+.modal-content{
+  
+  padding-right: 0px;
+}
+
+.modal-info{
+  padding: 10px 10px 10px 10px;
+}
+
+.button-close{
+  right: -25px;
+}
 .burger-button{
   margin-left: auto;
   width: 30px;

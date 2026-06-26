@@ -1,4 +1,3 @@
-//пишем реализацию burger menu
 
 function burgerMenu(){
   const burgerButton = document.querySelector('.burger-button');
@@ -35,31 +34,19 @@ function burgerMenu(){
   
 }
 
+
 async function loadPets() {
   const res = await fetch('./pets.json');
   if (!res.ok) throw new Error('pets.json not loaded');
   return res.json();
 }
 
-// Функция для получения случайных 3 карточек питомцев
-async function getRandomPets(count = 3) {
-    const pets = await loadPets(); 
-    const shuffled = [...pets];
-    
-    
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    
-    
-    return shuffled.slice(0, count);
-}
+
 
 // Функция для отображения карточек итомцев на странице
 async function renderPetsCard() {
     // Получаем контейнер, куда будем вставлять карточки
-    const container = document.querySelector('.slider-body');
+    const container = document.querySelector('.cards-container');
     
     // Получаем шаблон
     const template = document.getElementById('pets-card-template');
@@ -68,7 +55,8 @@ async function renderPetsCard() {
     container.innerHTML = '';
     
     // Получаем 3 случайных карточки
-    const randomPets = await getRandomPets(3);
+    const pets = await loadPets(); 
+    const randomPets = [...pets];
     
     // Создадим карточку
     randomPets.forEach(pet => {
@@ -97,13 +85,12 @@ async function renderPetsCard() {
 }
 
 
-
 async function initModal() {
     const modal = document.querySelector('.modal');
     const closeButton = document.querySelector('.button-close');
     const overlay = document.querySelector('.overlay');
     
-    const sliderBody = document.querySelector('.slider-body');
+    const sliderBody = document.querySelector('.cards-container');
 
     const pets = await loadPets(); 
     const randomPets = [...pets];
@@ -193,11 +180,23 @@ async function initModal() {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
      
     burgerMenu();
-   renderPetsCard();
-   initModal();
-    
-  
+     renderPetsCard();
+     initModal();
+   
 });

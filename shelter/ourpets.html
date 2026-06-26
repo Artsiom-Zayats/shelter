@@ -6,7 +6,7 @@
     <title>Our pets</title>
     <link rel="icon" type="image/svg+xml" href="./icons/icon-collars-leashes.svg">
     <link rel="stylesheet" href="./styles.css">
-    <script src="./index.js"></script>
+    <script src="./ourpets.js"></script>
 </head>
 <body>
    <header class="header-ourpets">
@@ -54,46 +54,7 @@
                 <span>are looking for a house</span>
             </h2>
             <div class="cards-container">
-                <div class="pet-card">
-                    <img src="./images/pets-katrine.png" alt="pet-photo">
-                    <p class="pet-name">Katrine</p>
-                    <button class="about-pet-button">Learn more</button>
-                </div>
-                <div class="pet-card">
-                    <img src="./images/pets-katrine.png" alt="pet-photo">
-                    <p class="pet-name">Katrine</p>
-                    <button class="about-pet-button">Learn more</button>
-                </div>
-                <div class="pet-card">
-                    <img src="./images/pets-katrine.png" alt="pet-photo">
-                    <p class="pet-name">Katrine</p>
-                    <button class="about-pet-button">Learn more</button>
-                </div>
-                <div class="pet-card">
-                    <img src="./images/pets-katrine.png" alt="pet-photo">
-                    <p class="pet-name">Katrine</p>
-                    <button class="about-pet-button">Learn more</button>
-                </div>
-                <div class="pet-card">
-                    <img src="./images/pets-katrine.png" alt="pet-photo">
-                    <p class="pet-name">Katrine</p>
-                    <button class="about-pet-button">Learn more</button>
-                </div>
-                <div class="pet-card">
-                    <img src="./images/pets-katrine.png" alt="pet-photo">
-                    <p class="pet-name">Katrine</p>
-                    <button class="about-pet-button">Learn more</button>
-                </div>
-                <div class="pet-card">
-                    <img src="./images/pets-katrine.png" alt="pet-photo">
-                    <p class="pet-name">Katrine</p>
-                    <button class="about-pet-button">Learn more</button>
-                </div>
-                <div class="pet-card">
-                    <img src="./images/pets-katrine.png" alt="pet-photo">
-                    <p class="pet-name">Katrine</p>
-                    <button class="about-pet-button">Learn more</button>
-                </div>
+                
                 
             </div>
             <div class="navigation">
@@ -106,6 +67,13 @@
                     <button class="right-end-navigator"></button>
                 </div>
         </div>
+        <template id="pets-card-template">
+                <div class="pet-card">
+                    <img src="./images/pets-katrine.png" alt="pet-photo" class="pet-photo">
+                    <p class="pet-name"></p>
+                    <button class="about-pet-button">Learn more</button>
+                </div>
+        </template>
     </div>
    </main>
    <footer>
@@ -142,5 +110,34 @@
         </div>
    </footer>
    <div class="overlay"></div>
+   <div class="modal hidden">
+   <button class="button-close"></button>
+    <div class="modal-content">
+        <img src="./images/pets-jennifer.png" alt="pes" class="modal-image">
+        <div class="modal-info">
+            <h3 class="modal-name">Jennifer</h3>
+            <p class="modal-typeBreed">Dog-Labrador</p>
+            <p class="modal-pets-info">Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.</p>
+            <ul class="modal-list">
+                <li class="modal-li" >
+                    <span class="modal-li-info">Age: </span>
+                    <span class="modal-age"></span>
+                </li>
+                <li class="modal-li" >
+                    <span class="modal-li-info">Inoculations: </span>
+                    <span class="inoculations"></span>
+                </li>
+                <li class="modal-li" >
+                    <span class="modal-li-info">Diseases: </span>
+                    <span class="diseases"></span>
+                </li>
+                <li class="modal-li" >
+                    <span class="modal-li-info">Parasites: </span>
+                    <span class="parasites"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+   </div>
 </body>
 </html>
