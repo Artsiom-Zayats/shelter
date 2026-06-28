@@ -41,8 +41,8 @@ async function loadPets() {
   return res.json();
 }
 
-// Функция для получения случайных 3 карточек питомцев
-async function getRandomPets(count = 3) {
+// Функция для получения случайных карточек питомцев
+async function getRandomPets(count) {
     const pets = await loadPets(); 
     const shuffled = [...pets];
     
@@ -68,7 +68,7 @@ async function renderPetsCard() {
     container.innerHTML = '';
     
     // Получаем 3 случайных карточки
-    const randomPets = await getRandomPets(3);
+    const randomPets = await getRandomPets(8);
     
     // Создадим карточку
     randomPets.forEach(pet => {
@@ -92,9 +92,103 @@ async function renderPetsCard() {
 
         
     });
+    const firstClone = container.firstElementChild.cloneNode(true);
+    const lastClone = container.lastElementChild.cloneNode(true);
+
+    container.appendChild(firstClone);
+    container.insertBefore(lastClone,container.firstChild);
+    slider();
+    
+}
+
+
+//Слайдер
+let currentIndex = 0;
+function slider(){
+    const sliderBody = document.querySelector('.slider-body');
+    const prevButton = document.querySelector('.left');
+    const nextButton = document.querySelector('.right');
+    const gap = parseFloat(getComputedStyle(sliderBody).gap) || 0;
+    
+    //определим колличество кликов для сброса в начало в зависимости от ширины экрана
+    let maxClick = 6;
+    let clientWidth = document.documentElement.clientWidth;
+
+    if(clientWidth<767){
+        maxClick = 8;
+    }else if(clientWidth<1000){
+        maxClick = 7
+    }
+
+
+
+
+    const initSlider = () =>{
+        const slideWidth = sliderBody.firstElementChild.offsetWidth;
+        
+        sliderBody.style.translate = `-${slideWidth*(currentIndex+1)+gap}px`;
+    }
+    initSlider();
+
+    nextButton.addEventListener('click',()=>{
+        const slideWidth = sliderBody.firstElementChild.offsetWidth;
+        currentIndex++;
+        sliderBody.style.transition = `translate 0.5s ease-in-out`;
+        sliderBody.style.translate = `-${slideWidth*(currentIndex+1)+gap*(currentIndex+1)}px`;
+
+
+        if(currentIndex>=maxClick){
+            nextButton.disabled = true;
+        }
+
+        //делаем ограничение  на крайний клик
+        sliderBody.addEventListener(
+            'transitionend',
+            ()=>{
+                if(currentIndex>=maxClick){
+                    currentIndex=0;
+                    sliderBody.style.transition = `none`;
+                    sliderBody.offsetHeight;
+                    sliderBody.style.translate = `-${slideWidth*(currentIndex+1)+gap*(currentIndex+1)}px`;
+                    nextButton.disabled = false;
+                }
+            },
+            {once:true}
+        )
+    })
+
+    prevButton.addEventListener('click',()=>{
+        const slideWidth = sliderBody.firstElementChild.offsetWidth;
+        currentIndex--;
+        sliderBody.style.transition = `translate 0.5s ease-in-out`;
+        sliderBody.style.translate = `-${slideWidth*(currentIndex+1)+gap*(currentIndex+1)}px`;
+
+
+        if(currentIndex>=maxClick){
+            nextButton.disabled = true;
+        }
+
+        //делаем ограничение
+        sliderBody.addEventListener(
+            'transitionend',
+            ()=>{
+                if(currentIndex<0){
+                    currentIndex=maxClick-1;
+                    sliderBody.style.transition = `none`;
+                    sliderBody.offsetHeight;
+                    sliderBody.style.translate = `-${slideWidth*(currentIndex+1)+gap*(currentIndex+1)}px`;
+                    nextButton.disabled = false;
+                }
+            },
+            {once:true}
+        )
+    })
 
     
 }
+
+
+
 
 
 
@@ -146,7 +240,7 @@ async function initModal() {
 
             document.body.classList.add('no-scroll');
 
-            //пробуем добавить снежинки
+            
 
 
             
