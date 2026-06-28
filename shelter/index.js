@@ -68,9 +68,9 @@ async function renderPetsCard() {
     container.innerHTML = '';
     
     // Получаем 3 случайных карточки
-    const pets = await loadPets(); 
+   
     
-    const randomPets = [...pets];
+    const randomPets = await getRandomPets(8);
     
     // Создадим карточку
     randomPets.forEach(pet => {
