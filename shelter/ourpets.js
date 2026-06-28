@@ -1,4 +1,3 @@
-//пишем реализацию burger menu
 
 function burgerMenu(){
   const burgerButton = document.querySelector('.burger-button');
@@ -35,31 +34,19 @@ function burgerMenu(){
   
 }
 
+
 async function loadPets() {
   const res = await fetch('./pets.json');
   if (!res.ok) throw new Error('pets.json not loaded');
   return res.json();
 }
 
-// Функция для получения случайных карточек питомцев
-async function getRandomPets(count) {
-    const pets = await loadPets(); 
-    const shuffled = [...pets];
-    
-    
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    
-    
-    return shuffled.slice(0, count);
-}
+
 
 // Функция для отображения карточек итомцев на странице
 async function renderPetsCard() {
     // Получаем контейнер, куда будем вставлять карточки
-    const container = document.querySelector('.slider-body');
+    const container = document.querySelector('.cards-container');
     
     // Получаем шаблон
     const template = document.getElementById('pets-card-template');
@@ -68,9 +55,8 @@ async function renderPetsCard() {
     container.innerHTML = '';
     
     // Получаем 3 случайных карточки
-   
-    
-    const randomPets = await getRandomPets(8);
+    const pets = await loadPets(); 
+    const randomPets = [...pets];
     
     // Создадим карточку
     randomPets.forEach(pet => {
@@ -94,124 +80,9 @@ async function renderPetsCard() {
 
         
     });
-    // const firstClone = container.firstElementChild.cloneNode(true);
-    // const lastClone = container.lastElementChild.cloneNode(true);
-
-    
-    const allChildren = Array.from(container.children); 
-
-    
-    const firstTwo = allChildren.slice(0, 2);
-    const lastTwo = allChildren.slice(-2);
-
-   
-    const clonedFirstTwo = firstTwo.map(el => el.cloneNode(true));
-    const clonedLastTwo = lastTwo.map(el => el.cloneNode(true));
-
-    
-    container.prepend(...clonedLastTwo);
-    
-    container.append(...clonedFirstTwo);
-
-
-
-
-
-    // container.appendChild(firstClone);
-    // container.insertBefore(lastClone,container.firstChild);
-    slider();
-    
-}
-
-
-//Слайдер
-let currentIndex = 0;
-function slider(){
-    const sliderBody = document.querySelector('.slider-body');
-    const prevButton = document.querySelector('.left');
-    const nextButton = document.querySelector('.right');
-    const gap = parseFloat(getComputedStyle(sliderBody).gap) || 0;
-    
-    //определим колличество кликов для сброса в начало в зависимости от ширины экрана
-    let maxClick = 8;
-    let clientWidth = document.documentElement.clientWidth;
-
-    // if(clientWidth<767){
-    //     maxClick = 8;
-    // }else if(clientWidth<1000){
-    //     maxClick = 7
-    // }
-
-
-
-
-    const initSlider = () =>{
-        const slideWidth = sliderBody.firstElementChild.offsetWidth;
-        
-        sliderBody.style.translate = `-${slideWidth*(currentIndex+1)+gap}px`;
-    }
-    initSlider();
-
-    nextButton.addEventListener('click',()=>{
-        const slideWidth = sliderBody.firstElementChild.offsetWidth;
-        currentIndex++;
-        sliderBody.style.transition = `translate 0.5s ease-in-out`;
-        sliderBody.style.translate = `-${slideWidth*(currentIndex+1)+gap*(currentIndex+1)}px`;
-
-
-        if(currentIndex>=maxClick){
-            nextButton.disabled = true;
-        }
-
-        //делаем ограничение  на крайний клик
-        sliderBody.addEventListener(
-            'transitionend',
-            ()=>{
-                if(currentIndex>=maxClick){
-                    currentIndex=0;
-                    sliderBody.style.transition = `none`;
-                    sliderBody.offsetHeight;
-                    sliderBody.style.translate = `-${slideWidth*(currentIndex+1)+gap*(currentIndex+1)}px`;
-                    nextButton.disabled = false;
-                }
-            },
-            {once:true}
-        )
-    })
-
-    prevButton.addEventListener('click',()=>{
-        const slideWidth = sliderBody.firstElementChild.offsetWidth;
-        currentIndex--;
-        sliderBody.style.transition = `translate 0.5s ease-in-out`;
-        sliderBody.style.translate = `-${slideWidth*(currentIndex+1)+gap*(currentIndex+1)}px`;
-
-
-        if(currentIndex>=maxClick){
-            nextButton.disabled = true;
-        }
-
-        //делаем ограничение
-        sliderBody.addEventListener(
-            'transitionend',
-            ()=>{
-                if(currentIndex<0){
-                    currentIndex=maxClick-1;
-                    sliderBody.style.transition = `none`;
-                    sliderBody.offsetHeight;
-                    sliderBody.style.translate = `-${slideWidth*(currentIndex+1)+gap*(currentIndex+1)}px`;
-                    nextButton.disabled = false;
-                }
-            },
-            {once:true}
-        )
-    })
 
     
 }
-
-
-
-
 
 
 async function initModal() {
@@ -219,7 +90,7 @@ async function initModal() {
     const closeButton = document.querySelector('.button-close');
     const overlay = document.querySelector('.overlay');
     
-    const sliderBody = document.querySelector('.slider-body');
+    const sliderBody = document.querySelector('.cards-container');
 
     const pets = await loadPets(); 
     const randomPets = [...pets];
@@ -262,7 +133,7 @@ async function initModal() {
 
             document.body.classList.add('no-scroll');
 
-            
+          
 
 
             
@@ -309,11 +180,139 @@ async function initModal() {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
-     
+
+
+
+
+//Пагинация
+
+
+//48 карточек
+function buildPetList(pets) {
+    const list = [];
+    for (let i = 0; i < 6; i++) {
+        for (let j = 0; j < 8; j++) {
+            list.push(pets[j]);
+        }
+    }
+    return list; 
+}
+
+function getCardsPerPage() {
+    const w = document.documentElement.clientWidth;
+    if (w >= 1280) return 8;  // деск: 6 страниц × 8 карточек
+    if (w >= 768) return 6;   // планшет: 8 страниц × 6 карточек
+    return 3;                  // моб:  16 страниц × 3 карточки
+}
+
+let currentPage = 1;
+let petList = [];
+
+function renderPage(page, animate) {
+    const container = document.querySelector('.cards-container');
+    const template = document.getElementById('pets-card-template');
+    const perPage = getCardsPerPage();
+    const totalPages = 48 / perPage;
+
+    currentPage = Math.max(1, Math.min(page, totalPages));
+
+    const start = (currentPage - 1) * perPage;
+    const pagePets = petList.slice(start, start + perPage);
+
+    const doRender = () => {
+        container.innerHTML = '';
+        pagePets.forEach(pet => {
+            const card = template.content.cloneNode(true);
+            card.querySelector('.pet-photo').src = pet.img;
+            card.querySelector('.pet-name').textContent = pet.name;
+            container.appendChild(card);
+        });
+        updateNav(totalPages);
+        if (animate) {
+            requestAnimationFrame(() => {
+                container.style.opacity = '1';
+            });
+        }
+    };
+
+    if (animate) {
+        container.style.transition = 'opacity 0.3s ease';
+        container.style.opacity = '0';
+        setTimeout(doRender, 300);
+    } else {
+        container.style.transition = 'none';
+        container.style.opacity = '1';
+        doRender();
+    }
+}
+
+function updateNav(totalPages) {
+    const pageNum = document.querySelector('.page-number');
+    const btnFirst = document.querySelector('.left-end-navigator');
+    const btnPrev = document.querySelector('.left-navigator');
+    const btnNext = document.querySelector('.right-navigator');
+    const btnLast = document.querySelector('.right-end-navigator');
+
+    pageNum.textContent = currentPage;
+
+    const isFirst = currentPage === 1;
+    const isLast = currentPage === totalPages;
+
+    // Блокируем неактивные кнопки
+    btnFirst.disabled = isFirst;
+    btnPrev.disabled = isFirst;
+    btnNext.disabled = isLast;
+    btnLast.disabled = isLast;
+
+    // Состояние кнопок(визуал)
+    btnFirst.style.opacity = isFirst ? '0.4' : '1';
+    btnPrev.style.opacity = isFirst ? '0.4' : '1';
+    btnNext.style.opacity = isLast ? '0.4' : '1';
+    btnLast.style.opacity = isLast ? '0.4' : '1';
+
+    btnFirst.style.cursor = isFirst ? 'default' : 'pointer';
+    btnPrev.style.cursor = isFirst ? 'default' : 'pointer';
+    btnNext.style.cursor = isLast ? 'default' : 'pointer';
+    btnLast.style.cursor = isLast ? 'default' : 'pointer';
+}
+
+function initPagination() {
+    const btnFirst = document.querySelector('.left-end-navigator');
+    const btnPrev = document.querySelector('.left-navigator');
+    const btnNext = document.querySelector('.right-navigator');
+    const btnLast = document.querySelector('.right-end-navigator');
+
+    btnFirst.addEventListener('click', () => {
+        if (currentPage > 1) renderPage(1, true);
+    });
+    btnPrev.addEventListener('click', () => {
+        if (currentPage > 1) renderPage(currentPage - 1, true);
+    });
+    btnNext.addEventListener('click', () => {
+        if (currentPage < 48 / getCardsPerPage()) renderPage(currentPage + 1, true);
+    });
+    btnLast.addEventListener('click', () => {
+        if (currentPage < 48 / getCardsPerPage()) renderPage(48 / getCardsPerPage(), true);
+    });
+
+    // Возврат на первую стр при изм экрана
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => renderPage(1, false), 200);
+    });
+}
+
+
+
+
+document.addEventListener('DOMContentLoaded', async () => {
     burgerMenu();
-   renderPetsCard();
-   initModal();
-    
-  
+
+    const pets = await loadPets();
+    petList = buildPetList(pets);
+
+    renderPage(1, false);
+    initPagination();
+    initModal();
 });

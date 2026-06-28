@@ -6,33 +6,53 @@
     <title>Shelter</title>
     <link rel="icon" type="image/svg+xml" href="./icons/icon-bowls-and-cups.svg">
     <link rel="stylesheet" href="./styles.css">
+    <script src="./index.js"></script>
 </head>
 <body>
    <header class="header-main">
-    <div class="logo">
-        <p class="top-logo">Cozy House</p>
-        <p class="bot-logo">Shelter for pets in Boston</p>
+    <div class="header-content">
+        <div class="logo">
+            <p class="top-logo">Cozy House</p>
+            <p class="bot-logo">Shelter for pets in Boston</p>
+        </div>
+        <nav class="nav-menu">
+            <ul class="nav-menu-list">
+                <li class="nav-item">
+                    <a href="#about" class="nav-item" id="int2">About the shelter</a>
+                </li>
+                <li class="nav-item">
+                    <a href="./ourpets.html" class="nav-item">Our pets</a></li>
+                <li class="nav-item">
+                    <a href="#help" class="nav-item">Help the shelter</a></li>
+                <li class="nav-item">
+                    <a href="#contacts" class="nav-item">Contacts</a></li>
+            </ul>
+        </nav>
+        <div class="burger-button">
+            <span></span>
+        </div>
     </div>
-    <nav class="nav-menu">
-        <ul class="nav-menu-list">
-            <li class="nav-item">
-                <a href="#about" class="nav-item" id="int2">About the shelter</a>
-            </li>
-            <li class="nav-item">
+    <nav class="burger-menu hidden-burger">
+            <div class="burger-item">
+                <a href="#about" class="nav-item" >About the shelter</a>
+            </div>
+            <div class="burger-item">
                 <a href="./ourpets.html" class="nav-item">Our pets</a></li>
-            <li class="nav-item">
+            </div>
+            <div class="burger-item">
                 <a href="#help" class="nav-item">Help the shelter</a></li>
-            <li class="nav-item">
+            </div>
+            <div class="burger-item">
                 <a href="#contacts" class="nav-item">Contacts</a></li>
-        </ul>
+            </div>
     </nav>
     <div class="burger-button">
         <span></span>
     </div>
    </header>
    <main>
-    <h1 style="display: none;">Shelter</h1>
-        <div class="start-screen">
+        <h1 style="display: none;">Shelter</h1>
+        <section class="start-screen">
 
             <div class="start-container">
                 <h2 class="main-header">Not only people need a house</h2>
@@ -43,16 +63,16 @@
             
                 <img src="./images/start-screen-puppy.png" alt="pes" class="pes">
             
-        </div>
-        <div class="about" id="about">
+        </section>
+        <section class="about" id="about">
             <img src="./images/about-pets.png" alt="pets" class="pets-img">
             <div class="about-container">
                 <h3 class="about-header">About the shelter “Cozy House”</h3>
                 <p class="about-info">Currently we have 121 dogs and 342 cats on our hands and statistics show that only 20% of them will find a family. The others will continue to live with us and will be waiting for a lucky chance to become dearly loved.</p>
                 <p class="about-info">We feed our wards with the best food and make sure that they do not get sick, feel comfortable (including psychologically) and well. We are supported by 87 volunteers and 28 employees of various skill levels. About 12% of the animals are taken by the shelter staff. Taking care of the animals, they become attached to the pets and would hardly ever leave them alone.</p>
             </div>
-        </div>
-        <div class="pets">
+        </section>
+        <section class="pets">
             <div class="pets-content">
                 <h3 class="pets-header">
                     <span>Our friends who</span>
@@ -62,31 +82,25 @@
                     <button class="left">
                        
                     </button>
-                    <div class="slider-body">
-                        <div class="pet-card">
-                            <img src="./images/pets-katrine.png" alt="pet-photo" class="pet-photo">
-                            <p class="pet-name">Katrine</p>
-                            <button class="about-pet-button">Learn more</button>
-                        </div>
-                        <div class="pet-card">
-                            <img src="./images/pets-katrine.png" alt="pet-photo" class="pet-photo">
-                            <p class="pet-name">Katrine</p>
-                            <button class="about-pet-button">Learn more</button>
-                        </div>
-                        <div class="pet-card" >
-                            <img src="./images/pets-katrine.png" alt="pet-photo" class="pet-photo">
-                            <p class="pet-name">Katrine</p>
-                            <button class="about-pet-button">Learn more</button>
-                        </div>
-                    </div>
+                    <div class="sl-cont"><div class="slider-body">
+                       
+                    </div></div>
+                    
                     <button class="right">
                        
                     </button>
                 </div>
                 <a href="./ourpets.html" class="gold-button">Get to know the rest</a>
             </div>
-        </div>
-        <div class="help" id="help">
+            <template id="pets-card-template">
+                <div class="pet-card">
+                    <img src="./images/pets-katrine.png" alt="pet-photo" class="pet-photo">
+                    <p class="pet-name"></p>
+                    <button class="about-pet-button">Learn more</button>
+                </div>
+            </template>
+        </section>
+        <section class="help" id="help">
             <div class="help-content">
                 <h3 class="help-header">
                 <span>How you can help</span>
@@ -132,8 +146,8 @@
                 </div>
             </div>
             
-        </div>
-        <div class="donation">
+        </section>
+        <section class="donation">
             <div class="donation-content">
                 <img src="./images/donation-dog.png" alt="sobaka" class="sobaka">
                 <div class="donation-info">
@@ -149,7 +163,7 @@
                     <p class="payment-info">Legal information and lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a ipsum at libero sagittis dignissim sed ac diam. Praesent ultrices maximus tortor et vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
                 </div>
             </div>
-        </div>
+        </section>
    </main>
    <footer>
         <div class="footer-container" id="contacts">
@@ -187,5 +201,35 @@
             <img src="./images/footer-puppy.svg" alt="puppy" class="puppu-pes" >
         </div>
    </footer>
+   <div class="overlay"></div>
+   <div class="modal hidden">
+   <button class="button-close"></button>
+    <div class="modal-content">
+        <img src="./images/pets-jennifer.png" alt="pes" class="modal-image">
+        <div class="modal-info">
+            <h3 class="modal-name">Jennifer</h3>
+            <p class="modal-typeBreed">Dog-Labrador</p>
+            <p class="modal-pets-info">Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.</p>
+            <ul class="modal-list">
+                <li class="modal-li" >
+                    <span class="modal-li-info">Age: </span>
+                    <span class="modal-age"></span>
+                </li>
+                <li class="modal-li" >
+                    <span class="modal-li-info">Inoculations: </span>
+                    <span class="inoculations"></span>
+                </li>
+                <li class="modal-li" >
+                    <span class="modal-li-info">Diseases: </span>
+                    <span class="diseases"></span>
+                </li>
+                <li class="modal-li" >
+                    <span class="modal-li-info">Parasites: </span>
+                    <span class="parasites"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+   </div>
 </body>
 </html>
