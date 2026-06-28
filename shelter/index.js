@@ -68,7 +68,9 @@ async function renderPetsCard() {
     container.innerHTML = '';
     
     // Получаем 3 случайных карточки
-    const randomPets = await getRandomPets(8);
+    const pets = await loadPets(); 
+    
+    const randomPets = [...pets];
     
     // Создадим карточку
     randomPets.forEach(pet => {
@@ -92,11 +94,31 @@ async function renderPetsCard() {
 
         
     });
-    const firstClone = container.firstElementChild.cloneNode(true);
-    const lastClone = container.lastElementChild.cloneNode(true);
+    // const firstClone = container.firstElementChild.cloneNode(true);
+    // const lastClone = container.lastElementChild.cloneNode(true);
 
-    container.appendChild(firstClone);
-    container.insertBefore(lastClone,container.firstChild);
+    
+    const allChildren = Array.from(container.children); 
+
+    
+    const firstTwo = allChildren.slice(0, 2);
+    const lastTwo = allChildren.slice(-2);
+
+   
+    const clonedFirstTwo = firstTwo.map(el => el.cloneNode(true));
+    const clonedLastTwo = lastTwo.map(el => el.cloneNode(true));
+
+    
+    container.prepend(...clonedLastTwo);
+    
+    container.append(...clonedFirstTwo);
+
+
+
+
+
+    // container.appendChild(firstClone);
+    // container.insertBefore(lastClone,container.firstChild);
     slider();
     
 }
@@ -111,14 +133,14 @@ function slider(){
     const gap = parseFloat(getComputedStyle(sliderBody).gap) || 0;
     
     //определим колличество кликов для сброса в начало в зависимости от ширины экрана
-    let maxClick = 6;
+    let maxClick = 8;
     let clientWidth = document.documentElement.clientWidth;
 
-    if(clientWidth<767){
-        maxClick = 8;
-    }else if(clientWidth<1000){
-        maxClick = 7
-    }
+    // if(clientWidth<767){
+    //     maxClick = 8;
+    // }else if(clientWidth<1000){
+    //     maxClick = 7
+    // }
 
 
 
