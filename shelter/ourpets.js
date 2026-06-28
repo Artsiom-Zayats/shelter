@@ -133,7 +133,7 @@ async function initModal() {
 
             document.body.classList.add('no-scroll');
 
-            //пробуем добавить снежинки
+          
 
 
             
@@ -184,19 +184,135 @@ async function initModal() {
 
 
 
+//Пагинация
+
+
+//48 карточек
+function buildPetList(pets) {
+    const list = [];
+    for (let i = 0; i < 6; i++) {
+        for (let j = 0; j < 8; j++) {
+            list.push(pets[j]);
+        }
+    }
+    return list; 
+}
+
+function getCardsPerPage() {
+    const w = document.documentElement.clientWidth;
+    if (w >= 1280) return 8;  // деск: 6 страниц × 8 карточек
+    if (w >= 768) return 6;   // планшет: 8 страниц × 6 карточек
+    return 3;                  // моб:  16 страниц × 3 карточки
+}
+
+let currentPage = 1;
+let petList = [];
+
+function renderPage(page, animate) {
+    const container = document.querySelector('.cards-container');
+    const template = document.getElementById('pets-card-template');
+    const perPage = getCardsPerPage();
+    const totalPages = 48 / perPage;
+
+    currentPage = Math.max(1, Math.min(page, totalPages));
+
+    const start = (currentPage - 1) * perPage;
+    const pagePets = petList.slice(start, start + perPage);
+
+    const doRender = () => {
+        container.innerHTML = '';
+        pagePets.forEach(pet => {
+            const card = template.content.cloneNode(true);
+            card.querySelector('.pet-photo').src = pet.img;
+            card.querySelector('.pet-name').textContent = pet.name;
+            container.appendChild(card);
+        });
+        updateNav(totalPages);
+        if (animate) {
+            requestAnimationFrame(() => {
+                container.style.opacity = '1';
+            });
+        }
+    };
+
+    if (animate) {
+        container.style.transition = 'opacity 0.3s ease';
+        container.style.opacity = '0';
+        setTimeout(doRender, 300);
+    } else {
+        container.style.transition = 'none';
+        container.style.opacity = '1';
+        doRender();
+    }
+}
+
+function updateNav(totalPages) {
+    const pageNum = document.querySelector('.page-number');
+    const btnFirst = document.querySelector('.left-end-navigator');
+    const btnPrev = document.querySelector('.left-navigator');
+    const btnNext = document.querySelector('.right-navigator');
+    const btnLast = document.querySelector('.right-end-navigator');
+
+    pageNum.textContent = currentPage;
+
+    const isFirst = currentPage === 1;
+    const isLast = currentPage === totalPages;
+
+    // Блокируем неактивные кнопки
+    btnFirst.disabled = isFirst;
+    btnPrev.disabled = isFirst;
+    btnNext.disabled = isLast;
+    btnLast.disabled = isLast;
+
+    // Состояние кнопок(визуал)
+    btnFirst.style.opacity = isFirst ? '0.4' : '1';
+    btnPrev.style.opacity = isFirst ? '0.4' : '1';
+    btnNext.style.opacity = isLast ? '0.4' : '1';
+    btnLast.style.opacity = isLast ? '0.4' : '1';
+
+    btnFirst.style.cursor = isFirst ? 'default' : 'pointer';
+    btnPrev.style.cursor = isFirst ? 'default' : 'pointer';
+    btnNext.style.cursor = isLast ? 'default' : 'pointer';
+    btnLast.style.cursor = isLast ? 'default' : 'pointer';
+}
+
+function initPagination() {
+    const btnFirst = document.querySelector('.left-end-navigator');
+    const btnPrev = document.querySelector('.left-navigator');
+    const btnNext = document.querySelector('.right-navigator');
+    const btnLast = document.querySelector('.right-end-navigator');
+
+    btnFirst.addEventListener('click', () => {
+        if (currentPage > 1) renderPage(1, true);
+    });
+    btnPrev.addEventListener('click', () => {
+        if (currentPage > 1) renderPage(currentPage - 1, true);
+    });
+    btnNext.addEventListener('click', () => {
+        if (currentPage < 48 / getCardsPerPage()) renderPage(currentPage + 1, true);
+    });
+    btnLast.addEventListener('click', () => {
+        if (currentPage < 48 / getCardsPerPage()) renderPage(48 / getCardsPerPage(), true);
+    });
+
+    // Возврат на первую стр при изм экрана
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => renderPage(1, false), 200);
+    });
+}
 
 
 
 
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-     
+document.addEventListener('DOMContentLoaded', async () => {
     burgerMenu();
-     renderPetsCard();
-     initModal();
-   
+
+    const pets = await loadPets();
+    petList = buildPetList(pets);
+
+    renderPage(1, false);
+    initPagination();
+    initModal();
 });
