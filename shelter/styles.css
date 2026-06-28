@@ -766,19 +766,19 @@ footer{
 }
 
 .left-end-navigator{
-  background-image: url(./icons/__.svg);
+  background-image: url(./icons/left2.svg);
 }
 
 .left-navigator{
-  background-image: url(./icons/_.svg);
+  background-image: url(./icons/left.svg);
 }
 
 .right-navigator{
-  background-image: url(./icons/_\ \(1\).svg);
+  background-image: url(./icons/right.svg);
 }
 
 .right-end-navigator{
-  background-image: url(./icons/__\ \(1\).svg);
+  background-image: url(./icons/right2.svg);
 }
 
 .nav-item{
